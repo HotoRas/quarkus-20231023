@@ -13,6 +13,7 @@ body {
     color: white;
 
     transition: transform 0.3s, box-shadow 0.3s;
+    width: 200px;
 
     &:hover {
         transform: scale(1.05);
@@ -21,7 +22,7 @@ body {
 }
 
 .card-img-top {
-    /* height: 200px; */
+    height: 200px;
     object-fit: cover;
 }
 
