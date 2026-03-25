@@ -16,20 +16,37 @@
 <body>
 
     <!-- 헤더 (Navbar) -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">League of Legends</a>
+            <a class="navbar-brand" href="/#">리그 오브 레전드</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#">뉴스</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">챔피언</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">다운로드</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" href="#">외부 사이트</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.leageoflegends.com/ko-kr/" class="dropdown-item" target="_blank">공식
+                                    사이트</a></li>
+                            <li><a href="https://lol.ps" class="dropdown-item" target="_blank">전적 보기</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a href="https://youtube.com/" class="dropdown-item" target="_blank">관련 유튜브 채널</a></li>
+                        </ul>
+                    </li>
                 </ul>
+                <form role="search" class="d-flex">
+                    <input type="search" placeholder="검색..." aria-label="Search" class="form-control me-2">
+                    <button class="btn btn-outline-success" type="submit">검색</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -47,15 +64,36 @@
     <section class="container my-5">
         <h2 class="text-center mb-4 accent-purple">챔피언 선택</h2>
         <p class="text-center mb-5">전투에 뛰어들기, 팀 지원, 또는 그 중간? 당신의 스타일을 선택하세요.</p>
-        <div class="row g-4">
+        <div class="row g-4 row-cols-auto">
             <!-- Aatrox -->
             <div class="col-md-6 col-lg-4 col-xl-2">
                 <div class="card text-center h-100">
-                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Aatrox.png"
-                        class="card-img-top" alt="Aatrox" loading="lazy">
+                    <img src="/res/img/Aatrox.png" class="card-img-top" alt="Aatrox" loading="lazy">
                     <div class="card-body">
                         <h5 class="card-title accent-red">Aatrox (탑)</h5>
-                        <p class="card-text">어둠의 검으로 적을 베세요.</p>
+                        <p class="card-text">역할: 전사 / 난이도: 상</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0"><button class="btn btn-outline-light w-100"
+                            data-bs-toggle="modal" data-bs-target="#modalAatrox" data-champ="Aatrox">
+                            상세 보기
+                        </button></div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalAatrox" tabindex="-1" aria-labelledby="modalAatroxLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content bg-dark text-white border-secondary">
+                        <div class="modal-header border-secondary">
+                            <h5 class="modal-title" id="modalAatroxLabel">아트록스 (Aatrox) 상세 정보</h5>
+                            <button class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-0" style="height: 65vh;background:#0a0e17;">
+                            <iframe src="/modals/Aatrox.html" frameborder="0"
+                                style="width:100%;height:100%;border:none;" allowfullscreen></iframe>
+                        </div>
+                        <div class="modal-footer border-secondary"><button class="btn btn-outline-light" type="button"
+                                data-bs-dismiss="modal">닫기</button></div>
                     </div>
                 </div>
             </div>

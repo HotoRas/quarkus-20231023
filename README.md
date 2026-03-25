@@ -1,5 +1,5 @@
-# code-with-quarkus
-
+# quarkus 프로젝트 시작 (20231023 전도현)
+<!--TODO add summary-->
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
