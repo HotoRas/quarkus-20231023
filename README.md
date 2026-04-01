@@ -62,21 +62,28 @@ If you want to learn more about building native executables, please consult <htt
 - WebSockets ([guide](https://quarkus.io/guides/websockets)): WebSocket communication channel support
 
 ## Provided Code
+- Qute Web
+- REST
+- WebSockets
 
-### Qute Web
+## 주차별 요약
 
-Qute templates like `some-page.html` served via HTTP automatically by Quarkus from the `src/main/resource/templates/pub` directory. No controllers needed. Once the quarkus app is started visit the generated page at http://localhost:8080/some-page?name=World
+### 2주차
+> Hello, Quarkus!
 
-[Related guide section...](https://docs.quarkiverse.io/quarkus-qute-web/dev/index.html)
+- 프론트엔드 `/` 위치: `.../META-INF/resources/`
+- 개발 환경 인터페이스 -> `/q/dev-ui/welcome`
 
-### REST
+### 3주차
+> League of Legents | 1단계 ~ 4단계
 
-Easily start your REST Web Services
+- `/`에 기본 랜딩 페이지 삽입
+  * `/index.css`로 css 파일 분리
 
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+### 4주차
+> League of Legends | 이미지, 모달창 삽입
 
-### WebSockets
+- 기본 `/img`가 아닌 `/res/img/Aatrox.png`에 이미지 투척
 
-WebSocket communication channel starter code
-
-[Related guide section...](https://quarkus.io/guides/websockets)
+### 5주차
+> TODO
