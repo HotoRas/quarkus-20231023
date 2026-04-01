@@ -1,0 +1,22 @@
+body {
+    background-color: #0a0e17;
+    color: white;
+    padding: 1.5rem;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+h3,
+h4 {
+    color: #c8aa6e;
+    /* LOL 골드 톤 */
+}
+
+.text-muted {
+    color: #a0a0a0 !important;
+}
+
+.list-group-item {
+    background: transparent;
+    border-color: #444;
+    color: white;
+}

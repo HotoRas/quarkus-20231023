@@ -86,4 +86,8 @@ If you want to learn more about building native executables, please consult <htt
 - 기본 `/img`가 아닌 `/res/img/Aatrox.png`에 이미지 투척
 
 ### 5주차
-> TODO
+> League of Legends | 챔피언 모달, 다운로드 페이지 구현
+
+- 상대경로 `../`가 아닌 절대경로 `/`로 이미지 경로 지정
+- `Aatrox.html`에서 `custom.css` 분리: `/css/champion.css`
+- `index.css` 이동: `/css/index.css`
