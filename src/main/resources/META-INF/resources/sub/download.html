@@ -85,6 +85,7 @@
             <!-- Windows 탭 -->
             <div class="tab-pane fade show active" id="windows" role="tabpanel">
                 <div class="table-responsive">
+                    <!-- 가시성 문제: .table-dark 투입해 인터렉션시 가시성 개선 -->
                     <table class="table table-bordered table-hover table-dark">
                         <thead>
                             <tr>
@@ -139,7 +140,7 @@
                 </div>
             </div>
 
-            <!-- Mac 탭 (실제 사양 기반, 간단히 예시) -->
+            <!-- Mac 탭 (https://support-leagueoflegends.riotgames.com/hc/ko/articles/201752654-%EC%B5%9C%EC%86%8C-%EB%B0%8F-%EA%B6%8C%EC%9E%A5-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%82%AC%EC%96%91-%EB%A6%AC%EA%B7%B8-%EC%98%A4%EB%B8%8C-%EB%A0%88%EC%A0%84%EB%93%9C) -->
             <div class="tab-pane fade" id="mac" role="tabpanel">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-dark">
@@ -153,28 +154,45 @@
                         <tbody>
                             <tr>
                                 <td>운영체제</td>
-                                <td>macOS 10.15 이상</td>
-                                <td>macOS 13 Ventura 이상</td>
+                                <td>macOS 10.15</td>
+                                <td>macOS 11 이상</td>
                             </tr>
                             <tr>
                                 <td>CPU</td>
-                                <td>Intel Core i5 또는 Apple M1</td>
-                                <td>Apple M2 이상</td>
+                                <td>Intel: Core i5-750<br>Apple: M1</td>
+                                <td>Intel: Core i5-3300<br>Apple: M1, A18 Pro</td>
                             </tr>
                             <tr>
                                 <td>메모리(RAM)</td>
-                                <td>4GB</td>
-                                <td>8GB 이상</td>
+                                <td>2GB</td>
+                                <td>4GB 이상</td>
                             </tr>
                             <tr>
                                 <td>여유 저장 공간</td>
+                                <td>HDD 12GB</td>
                                 <td>SSD 16GB 이상</td>
-                                <td>SSD 30GB 이상</td>
                             </tr>
                             <tr>
-                                <td>그래픽</td>
-                                <td>Metal 지원 GPU</td>
-                                <td>Metal 2 지원 GPU</td>
+                                <td>GPU</td>
+                                <td>Metal 지원 GPU, 예시:<br>
+                                    <ul>
+                                        <li>MTLGPUFamilyCommon2</li>
+                                        <li>MTLGPUFamilyApple4</li>
+                                        <li>MTLGPUFamilyMetal3</li>
+                                        <li>MTLGPUFamilyMac2</li>
+                                    </ul>
+                                </td>
+                                <td>AMD: Radeon HD 6950<br>Intel: Intel UHD 630 내장 그래픽<br>Apple: M1 G13 family 이상</td>
+                            </tr>
+                            <tr>
+                                <td>VRAM</td>
+                                <td>1GB</td>
+                                <td>2GB 이상<br>Apple: 자동 지정</td>
+                            </tr>
+                            <tr>
+                                <td>권장 그래픽 설정</td>
+                                <td>해상도: 1024x768<br>품질: 낮음</td>
+                                <td>해상도: 1920x1080<br>품질: 높음</td>
                             </tr>
                         </tbody>
                     </table>

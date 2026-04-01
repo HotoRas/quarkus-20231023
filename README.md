@@ -92,3 +92,33 @@ If you want to learn more about building native executables, please consult <htt
 - `Aatrox.html`에서 `custom.css` 분리: `/css/champion.css`
 - `index.css` 이동: `/css/index.css`
 - gitignore 업데이트: `*.exe` 파일 제외
+- `/sub/download.html`: MacOS 최신 사양 갱신 [출처: 공식 LoL 서포트 페이지](https://support-leagueoflegends.riotgames.com/hc/ko/articles/201752654-%EC%B5%9C%EC%86%8C-%EB%B0%8F-%EA%B6%8C%EC%9E%A5-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%82%AC%EC%96%91-%EB%A6%AC%EA%B7%B8-%EC%98%A4%EB%B8%8C-%EB%A0%88%EC%A0%84%EB%93%9C)
+  * Bionic A18 Pro 추가: M1과 M1 Pro 사이 사양으로 권장 사양 충족
+  * M1 G13 family를 그래픽 권장 사양에 반영
+
+#### 현재 디렉토리 구조
+```tree
+src/main/resources/META-INF/resources/
+    === frontend@/
+│
+├ index.html
+├ css/
+│ │
+│ ├ index.css
+│ ├ champion.css
+│ └ download.css
+├ modals/
+│ │
+│ └ Aatrox.html
+├ pds/
+│ │
+│ └ lol.exe
+├ res/
+│ │
+│ ├ bnr/...
+│ ├ img/...
+│ └ img-large/...
+└ sub/
+  │
+  └ download.html
+```
