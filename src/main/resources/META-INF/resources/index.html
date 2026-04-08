@@ -43,14 +43,19 @@
                             <li><a href="https://youtube.com/" class="dropdown-item" target="_blank">관련 유튜브 채널</a></li>
                         </ul>
                     </li>
+                    <li><a href="#" class="btn btn.primary btn-lg" onclick="alert('즐거운 플레이 되세요')">무료 플레이</a></li>
                 </ul>
-                <form role="search" class="d-flex">
-                    <input type="search" placeholder="검색..." aria-label="Search" class="form-control me-2">
-                    <button class="btn btn-outline-success" type="submit">검색</button>
+                <form role="search" class="d-flex" id="searchForm">
+                    <input type="search" placeholder="검색..." aria-label="Search" class="form-control me-2"
+                        id="searchInput">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
+
+    <!-- late include script: enable ID search-->
+    <script src="/js/search.js"></script>
 
     <!-- 히어로 배너 (Hero Banner) -->
     <section class="hero d-flex align-items-center justify-content-center text-center py-5">

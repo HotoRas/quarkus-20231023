@@ -122,3 +122,10 @@ src/main/resources/META-INF/resources/
   │
   └ download.html
 ```
+
+### 6주차
+javascript! (프론트엔드 WebDAV 스크립팅)
+- 구조, 기본 문법
+  - omit (`var` `let` `const` `function(){}` `const = () => {}`)
+  - omit (`document.getElementById` `HTMLElement.prototype.addEventListener(type,*func)`)
+- 외부 스크립트 방식 구현
