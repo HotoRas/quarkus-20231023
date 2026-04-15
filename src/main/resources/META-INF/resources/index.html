@@ -25,11 +25,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#">뉴스</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#">챔피언</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="/#">뉴스</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="/#">챔피언</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="/sub/download.html#">다운로드</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="/#">로그인</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false" href="#">외부 사이트</a>
@@ -54,8 +54,6 @@
         </div>
     </nav>
 
-    <!-- late include script: enable ID search-->
-    <script src="/js/search.js"></script>
 
     <!-- 히어로 배너 (Hero Banner) -->
     <section class="hero d-flex align-items-center justify-content-center text-center py-5">
@@ -158,6 +156,72 @@
                     </div>
                 </div>
             </div>
+            <!-- Neeko -->
+            <div class="col-md-6 col-lg-4 col-xl-2">
+                <div class="card text-center h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Neeko.png" alt="Neeko"
+                        class="card-img-top" loading="lazy">
+                    <div class="card-body">
+                        <h5 class="card-title accent-purple">Neeko (마법사/서포터)</h5>
+                        <p class="card-text">알쏭달쏭 카멜레온</p>
+                    </div>
+                </div>
+            </div>
+            <!-- lux -->
+            <div class="col-md-6 col-lg-4 col-xl-2">
+                <div class="card text-center h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Lux.png" alt="Lux"
+                        loading="lazy" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title accent-purple">Lux (마법사/서포터)</h5>
+                        <div class="card-text">광명의 소녀</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Darius -->
+            <div class="col-md-6 col-lg-4 col-xl-2">
+                <div class="card text-center h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Darius.png" alt="Darius"
+                        loading="lazy" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title accent-purple">Darius (전사/탱커)</h5>
+                        <div class="card-text">녹서스의 실력자</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Diana -->
+            <div class="col md-6 col-lg-4 col-xl-2">
+                <div class="card text-center h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Diana.png" alt="Diana"
+                        loading="lazy" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title accent-purple">Diana (전사/암살자)</h5>
+                        <div class="card-text">차가운 달의 분노</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Nasus -->
+            <div class="col md-6 col-lg-4 col-xl-2">
+                <div class="card text-center h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Nasus.png" alt="Nasus"
+                        loading="lazy" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title accent-purple">Nasus (전사/탱커)</h5>
+                        <div class="card-text">사막의 관리자</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Nidalee -->
+            <div class="col md-6 col-lg-4 col-xl-2">
+                <div class="card text-center h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Nidalee.png" alt="Nidalee"
+                        loading="lazy" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title accent-purple">Nidalee (암살자/마법사)</h5>
+                        <div class="card-text">야성의 사냥꾼</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -186,10 +250,44 @@
         </div>
     </section>
 
+    <section id="searchResults">
+        <div class="search-keyword-header">
+            <h1 id="searchKeywordDisplay"></h1>
+        </div>
+        <div class="search-body">
+            <div class="container-fluid px-0">
+                <div class="row g-0">
+                    <div class="col-md-3 col-lg-2 search-disebar bg-white py-4">
+                        <div class="px-3 mb-3 searchResultsCategory">카테고리</div>
+                        <div class="search-category-item active search-category-champ">
+                            챔피언 <span class="count" id="champCount">(0)</span>
+                        </div>
+                        <div class="search-cateory-item search-category-news">
+                            뉴스 <span class="count" id="newsCount">(0)</span>
+                        </div>
+                        <div class="col-md-9 col-lg-10 search-content-area">
+                            <div id="resultChampion">
+                                <h5 class="mb-4 searchSidebarTitle">챔피언</h5>
+                                <div id="championResultList"></div><!-- Uncaught Runtime getElementById -->
+                            </div>
+                            <div id="resultNews">
+                                <h5 class="mb-4 searchSidebarTitle">뉴스</h5>
+                                <div id="newsResultList"></div><!-- Uncaught Runtime getElementById -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- <footer>
         Resources copyright (c) Riot Games.<br>
         "League of Legends" and its logos are trademarks of Riot Games.
     </footer> -->
+
+    <!-- late include script: enable ID search-->
+    <script src="/js/search.js"></script>
 </body>
 
 </html>

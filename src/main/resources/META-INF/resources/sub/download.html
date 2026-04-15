@@ -22,11 +22,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#">뉴스</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#">챔피언</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="/#">뉴스</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="/#">챔피언</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="/sub/download.html#">다운로드</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="/#">로그인</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false" href="#">외부 사이트</a>
@@ -65,7 +65,7 @@
     <!-- 시스템 사양 섹션 -->
     <section class="container my-5">
         <h2 class="text-center mb-4 accent-purple">권장 시스템 사양</h2>
-        <h2 class="text-center mb-5 accent-purple">최소 및 권장 사양을 확인하고, 원활한 플레이를 위한 PC 사양을 맞춰주세요.</h2>
+        <h3 class="text-center mb-5 accent-purple">최소 및 권장 사양을 확인하고, 원활한 플레이를 위한 PC 사양을 맞춰주세요.</h3>
 
         <!-- 탭: Windows / Mac (첨부 이미지처럼) -->
         <ul class="nav nav-tabs justify-content-center mb-4" id="osTabs" role="tablist">
@@ -172,15 +172,29 @@
                             </tr>
                             <tr>
                                 <td>GPU</td>
-                                <td>Metal 지원 GPU, 예시:<br>
+                                <!-- 출처 : https://developer.apple.com/documentation/metal/MTLGPUFamily -->
+                                <td>Metal 2 지원 GPU. 예시:<br>
                                     <ul>
-                                        <li>MTLGPUFamilyCommon2</li>
-                                        <li>MTLGPUFamilyApple4</li>
-                                        <li>MTLGPUFamilyMetal3</li>
-                                        <li>MTLGPUFamilyMac2</li>
+                                        <li>MTLGPUFamilyCommon2:<br>
+                                            <ul>
+                                                <li>AMD: Radeon RX Vega 56 및 이후</li>
+                                                <li>Intel: HD 4000 시리즈, UHD 630 및 이후</li>
+                                            </ul>
+                                        </li>
+                                        <li>MTLGPUFamilyApple4,<br>MTLGPUFamilyMac2:<br>
+                                            <ul>
+                                                <li>Apple: A11 Bionic 이상</li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </td>
-                                <td>AMD: Radeon HD 6950<br>Intel: Intel UHD 630 내장 그래픽<br>Apple: M1 G13 family 이상</td>
+                                <td>Metal 3 지원 GPU (MTLGPUFamilyMetal3)<br>
+                                    <ul>
+                                        <li>Apple: A14 Bionic 이상</li>
+                                        <li>Apple M: M1 이상</li>
+                                        <li>Intel: UHD 630, Iris Pro</li>
+                                    </ul>
+                                </td>
                             </tr>
                             <tr>
                                 <td>VRAM</td>
