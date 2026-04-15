@@ -1,5 +1,6 @@
+// -- 챔피언 raw 데이터, 뉴스 raw 데이터
 const CHAMPIONS = [
-    { name: '아트록스', engName: 'Aatrox', role: '전사', lane: '탑', img: 'images/Aatrox.png', difficulty: '상' },
+    { name: '아트록스', engName: 'Aatrox', role: '전사', lane: '탑', img: 'res/img/Aatrox.png', difficulty: '상' },
     { name: '사일러스', engName: 'Sylas', role: '마법사', lane: '정글/미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Sylas.png', difficulty: '중' },
     { name: '애니비아', engName: 'Anivia', role: '마법사', lane: '미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Anivia.png', difficulty: '상' },
     { name: '브라이어', engName: 'Briar', role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Briar.png', difficulty: '중' },
@@ -11,6 +12,14 @@ const NEWS = [
     { title: '새로운 챔피언 출시', desc: '2026 루나 레벨 이벤트! 신규 챔피언과 함께하는 특별한 시즌.', category: '게임 업데이트' },
     { title: '패치 노트 16.4', desc: '챔피언 밸런스 및 아이템 업데이트 내용을 확인하세요.', category: '패치 노트' },
 ]
+
+// ── 카테고리 전환 ────────────────────────────────────────────
+function switchCategory(type, el) {
+    document.querySelectorAll('.search-category-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('resultChampion').style.display = type === 'champion' ? 'block' : 'none';
+    document.getElementById('resultNews').style.display = type === 'news' ? 'block' : 'none';
+}
 
 // ── 검색 실행 ────────────────────────────────────────────────
 function performSearch(query) {
@@ -33,13 +42,27 @@ function performSearch(query) {
         champList.innerHTML = `<div class="no-result"><h4>검색 결과 없음</h4><p>"${query}"에 해당하는 챔피언이 없습니다.</p></div>`
     } else {
         champList.innerHTML = champResults.map(c => `
-<div class="search-result-card d-flex align-items-center p-0 overflow-hidden">
+<div class="search-result-card d-flex align-items-center p-0 overflow-hidden"
+data-bs-toggle=modal data-bs-target="#modalSearchChamp" data-champ="${c.engName}"><!-- 동적으로 모달 로드 방식: 모달 이름에 챔피언 이름 산입 불필요 -->
 <img src="${c.img}" alt="${c.name}">
 <div class="p-3">
 <div style="font-weight:700; font-size:1rem; color:#111;">${c.name} <span style="color:#888; font-size:0.85rem;">(${c.engName})</span></div>
 <div style="color:#555; font-size:0.9rem; margin-top:4px;">역할: ${c.role} &nbsp;|&nbsp; 라인: ${c.lane} &nbsp;|&nbsp; 난이도: ${c.difficulty}</div>
 </div>
 </div>
+<!-- 검색창용 모달 -->
+<div class="modal fade" id=modalSearchChamp tabindex="-1" aria-labelledby="modal${c.engName}Label" aria-hidde=true>
+<div class=modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+<div class="modal-content bg-dark text-white border-secondary">
+<div class="modal-header border-secondary">
+<h5 class=modal-title id=modalSearchLabel>${c.name} (${c.engName}) 상세 정보</h5
+<button class="btn-close btn-close-white" data-bs-dismiss=modal aria-label=Close></button>
+</div>
+<div class="modal-body p-0" style="height:65vh;background:#010e17;">
+<iframe src="/modals/${c.engName}.html" frameborder=0 style="width:100%;height:100%;border:none;" allowfullscreen></iframe>
+</div>
+<div class="modal-footer border-secondary><button class="btn btn-outline-light" type=button data-bs-dismiss=modal>닫기</button></div>
+</div></div></div>
 `).join('')
     }
     const newsList = document.getElementById('newsResultList') // 검색 결과 없는 경우, 있으면 카드형태 출력
@@ -69,5 +92,5 @@ document.getElementsByClassName('search-category-news')[0].addEventListener('onc
 document.getElementById('searchForm').addEventListener('submit', (e) => {
     e.preventDefault()
     const query = document.getElementById('searchInput').value.trim()
-    performSearch(query) // Uncaught runtime NonExistantToken
+    performSearch(query)
 })

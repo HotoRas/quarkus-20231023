@@ -129,3 +129,19 @@ javascript! (프론트엔드 WebDAV 스크립팅)
   - omit (`var` `let` `const` `function(){}` `const = () => {}`)
   - omit (`document.getElementById` `HTMLElement.prototype.addEventListener(type,*func)`)
 - 외부 스크립트 방식 구현
+
+### 7주차
+- 검색 구현 2차
+  - `JavaScript!list<[k:string]:v>`, `HTMLElement.innerHTML`
+  - 백틱(<code>`</code>) 스트링
+  - Event Listener `onClick` JS파일로 추출
+  - 추가 구현: 아트록스 모달 추출해 검색창용 모달로 추출
+- 기타
+  - 6주차의 navbar 다운로드 페이지로 복사
+
+#### todo!
+- 추가로 인젝션한 챔피언 6체 검색 구현
+- 챔피언 총 12체에 대한 모달 구현 (JS상 구현)
+  - `/script/search`의 `CHAMPIONS: any[]`를 별도 파일로 추출해 구현
+  - `document.getElementsByClassName(...).foreach((element)=>{...})`
+- 다운로드 페이지에 검색 코드 인젝션
