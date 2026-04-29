@@ -1,32 +1,34 @@
-/* JavaScript */
+// 성능 측정을 위한 대량의 데이터 생성
+const iteration = 1000000;
+const simpleArray = [];
+const objectArray = [];
 
-console.log('===== 1. 스코프 차이 =====')
+console.log("데이터 생성 중...");
+for (let i = 0; i < iteration; i++) {
+    simpleArray.push(`Item_${i}`);
+    objectArray.push({ id: i, title: `Item_${i}`, category: 'General' });
+}
 
-if (1) { var a = 'var 변수'; let b = 'let 변수'; const c = 'const 변수' }
-console.log('var a: ', a)
-// console.log('let b: ', b)
-// console.log('const c: ', c)
+// ── 1. 탐색(Search) 성능 테스트 ────────────────────
+console.log("\n--- 탐색 성능 테스트 (마지막 요소 찾기) ---");
 
-console.log('===== 2. 재선언 & 재할당 =====')
-var x = 10
-var x = 20 // ok
-console.log('var 재선언 -> ', x)
+// 일반 배열 탐색
+console.time("Simple Array Search");
+const result1 = simpleArray.indexOf("Item_999999");
+console.timeEnd("Simple Array Search");
 
-let y = 30
-//let y=40 // err
-y = 40
-console.log('let 재선언 X, 재할당 O -> ', y)
+// 객체 배열 탐색 (find 메서드)
+console.time("Object Array Search");
+const result2 = objectArray.find(item => item.title === "Item_999999");
+console.timeEnd("Object Array Search");
 
-const z = 50
-//let z=70
-//z=80
-console.log('const 재선언 X, 재할당 X -> ', z)
+// ── 2. 가공(Map) 성능 테스트 ────────────────────
+console.log("\n--- 데이터 가공 성능 테스트 (전체 순회) ---");
 
-// console.log("===== 3. 호이스팅 =====");
-// console.log(testVar); // undefined
-// var testVar = 100;
-// console.log(testLet); // ReferenceError
-// let testLet = 200;
-// console.log(testConst); // ReferenceError
-// const testConst = 300;
+console.time("Simple Array Map");
+simpleArray.map(item => item + "_Updated");
+console.timeEnd("Simple Array Map");
 
+console.time("Object Array Map");
+objectArray.map(item => ({ ...item, updated: true }));
+console.timeEnd("Object Array Map");
