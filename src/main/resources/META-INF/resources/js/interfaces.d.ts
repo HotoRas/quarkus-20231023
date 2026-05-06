@@ -1,5 +1,6 @@
 // @jakarta.persistence.Entity
-// public class kr.hotoras.champion.Champion extends io.quarkus.hibernate.orm.panache.PanacheEntity
+// public class kr.hotoras.champion.Champion
+//     extends io.quarkus.hibernate.orm.panache.PanacheEntity
 declare class Champion {
     name: string;
     role: string;
@@ -7,7 +8,8 @@ declare class Champion {
 }
 
 // @jakarta.persistence.Entity
-// public class kr.hotoras.login.User extends io.quarkus.hibernate.orm.panache.PanacheEntity
+// public class kr.hotoras.login.User
+//     extends io.quarkus.hibernate.orm.panache.PanacheEntity
 declare class User {
     username: string;
     password: string;
