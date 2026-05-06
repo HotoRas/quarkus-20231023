@@ -5,6 +5,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 import jakarta.transaction.Transactional;
 import kr.hotoras.champion.Champion;
+import kr.hotoras.login.User;
 
 @ApplicationScoped
 public class DataSeeder {
@@ -14,6 +15,12 @@ public class DataSeeder {
      */
     @Transactional
     void onStart(@Observes StartupEvent ev) { // CDI 표준, 이벤트
+        if (User.count() == 0) {
+            User guest = new User();
+            guest.username = "guest";
+            guest.password = "123123";
+            guest.persist();
+        }
         if (Champion.count() > 0)
             return; // 이미 데이터 있으면 중단
         persist("아트록스", "전사", "탑");

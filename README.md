@@ -96,51 +96,93 @@ If you want to learn more about building native executables, please consult <htt
   * Bionic A18 Pro 추가: M1과 M1 Pro 사이 사양으로 권장 사양 충족
   * M1 G13 family를 그래픽 권장 사양에 반영
 
-#### 현재 디렉토리 구조
-```tree
-src/main/resources/META-INF/resources/
-    === frontend@/
-│
-├ index.html
-├ css/
-│ │
-│ ├ index.css
-│ ├ champion.css
-│ └ download.css
-├ modals/
-│ │
-│ └ Aatrox.html
-├ pds/
-│ │
-│ └ lol.exe
-├ res/
-│ │
-│ ├ bnr/...
-│ ├ img/...
-│ └ img-large/...
-└ sub/
-  │
-  └ download.html
-```
-
 ### 6주차
 javascript! (프론트엔드 WebDAV 스크립팅)
 - 구조, 기본 문법
-  - omit (`var` `let` `const` `function(){}` `const = () => {}`)
-  - omit (`document.getElementById` `HTMLElement.prototype.addEventListener(type,*func)`)
+  * omit (`var` `let` `const` `function(){}` `const = () => {}`)
+  * omit (`document.getElementById` `HTMLElement.prototype.addEventListener(type,*func)`)
 - 외부 스크립트 방식 구현
 
 ### 7주차
 - 검색 구현 2차
-  - `JavaScript!list<[k:string]:v>`, `HTMLElement.innerHTML`
-  - 백틱(<code>`</code>) 스트링
-  - Event Listener `onClick` JS파일로 추출
-  - 추가 구현: 아트록스 모달 추출해 검색창용 모달로 추출
+  * `JavaScript!list<[k:string]:v>`, `HTMLElement.innerHTML`
+  * 백틱(<code>`</code>) 스트링
+  * Event Listener `onClick` JS파일로 추출
+  * 추가 구현: 아트록스 모달 추출해 검색창용 모달로 추출
 - 기타
-  - 6주차의 navbar 다운로드 페이지로 복사
+  * 6주차의 navbar 다운로드 페이지로 복사
+
+### 9주차
+- 다크 모드 토글러
+- SQLite 연동, database `lol` 생성
+
+### 10주차
+- 챔피언 테이블 sql로 이전
+  * TODO! 챔피언 검색 쿼리화
+- 로그인 및 회원관리 구현
+- 기타
+  * 본 주차의 navbar 다운로드 페이지로 복사
+
+#### 현재 프론트엔드 디렉토리 구조
+```tree
+/src/main/resources/META-INF/resources = /
+│  index.html
+│  
+├─css
+│      champion.css
+│      download.css
+│      index.css
+│      
+├─js
+│      interfaces.d.ts
+│      search.js
+│      test.js
+│      toggle.js
+│      
+├─login
+│      login.html
+│      main_after_login.html
+│      
+├─modals
+│      Aatrox.html
+│      navbar.html
+│      SearchChamp.html
+│      
+├─pds
+│      lol.exe
+│      
+├─res
+│  ├─bnr
+│  │      download-banner.webp
+│  │      
+│  ├─img
+│  │      Aatrox.png
+│  │      LOL.webp
+│  │      
+│  └─img-large
+│          Aatrox.jpg
+│          
+└─sub
+        download.html
+```
+#### 백엔드 디렉토리 구조
+```tree
+/src/main/java/kr/hotoras = package kr.hotoras
+├─champion
+│      Champion.java
+│      ChampionResource.java
+│      
+├─common
+│      DataSeeder.java
+│      GreetingResource.java
+│      StartWebSocket.java
+│      
+└─login
+        AuthResource.java
+        User.java
+```
 
 #### todo!
-- 추가로 인젝션한 챔피언 6체 검색 구현
 - 챔피언 총 12체에 대한 모달 구현 (JS상 구현)
   - `/script/search`의 `CHAMPIONS: any[]`를 별도 파일로 추출해 구현
   - `document.getElementsByClassName(...).foreach((element)=>{...})`
