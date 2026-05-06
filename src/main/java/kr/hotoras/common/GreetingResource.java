@@ -1,4 +1,4 @@
-package kr.hotoras;
+package kr.hotoras.common;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

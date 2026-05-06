@@ -1,4 +1,4 @@
-package kr.hotoras;
+package kr.hotoras.common;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.websocket.EncodeException;
