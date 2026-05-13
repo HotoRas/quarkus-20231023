@@ -13,6 +13,13 @@ declare class Champion {
 declare class User {
     username: string;
     password: string;
+    /*@unique*/ email: string;
+    phone: string;
 
     findByUsername: (username: string) => User;
+    findByEmail: (email: string) => User;
+}
+
+declare class UserRegister extends User {
+    passwordConfirm: string;
 }

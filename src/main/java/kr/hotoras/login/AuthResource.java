@@ -63,6 +63,12 @@ public class AuthResource {
                 .build();
     }
 
+    /**
+     * GET /after_login
+     * 로그인 후에만 페이지 로드
+     * 
+     * @return 로그인된 경우 `/login/main_after_login.html`, 아닌 경우 303 `/login`
+     */
     @GET
     @Path("/after_login")
     @Produces(MediaType.TEXT_HTML)
@@ -85,6 +91,11 @@ public class AuthResource {
         return Response.ok(html).build();
     }
 
+    /**
+     * 세션 폭파
+     * 
+     * @return 303 `/`
+     */
     @GET
     @Path("/logout")
     public Response logout() {
@@ -99,5 +110,21 @@ public class AuthResource {
         return Response
                 .seeOther(URI.create("/"))
                 .build();
+    }
+
+    /**
+     * 회원가입 셋팅
+     * 
+     * @return `/login/register.html`
+     */
+    @GET
+    @Path("/register")
+    @Produces(MediaType.TEXT_HTML)
+    public Response registerPage() {
+        InputStream html = getClass()
+                .getClassLoader()
+                .getResourceAsStream(
+                        "META-INF/resources/login/register.html");
+        return Response.ok(html).build();
     }
 }

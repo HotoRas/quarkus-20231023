@@ -182,8 +182,23 @@ javascript! (프론트엔드 WebDAV 스크립팅)
         User.java
 ```
 
+### 11주차
+> vscode:java-dev 버그로 인해 $PATH 오염, workspace 전체 다시 로드 실시
+
+- 로그인 구현 추가
+  * 회원가입 구현 (절반)
+
+#### database transaction
+```sql
+UPDATE lol.users SET email='guest@example.com' WHERE id=1;
+ALTER TABLE lol.users MODIFY COLUMN username VARCHAR(32) NOT NULL;
+ALTER TABLE lol.users MODIFY COLUMN password VARCHAR(511);
+ALTER TABLE lol.users MODIFY COLUMN email VARCHAR(255) NOT NULL;
+ALTER TABLE lol.users MODIFY COLUMN phone VARCHAR(32);
+```
+
 #### todo!
 - 챔피언 총 12체에 대한 모달 구현 (JS상 구현)
-  - `/script/search`의 `CHAMPIONS: any[]`를 별도 파일로 추출해 구현
+  - `/js/search`의 `CHAMPIONS: any[]`를 별도 파일로 추출해 구현
   - `document.getElementsByClassName(...).foreach((element)=>{...})`
 - 다운로드 페이지에 검색 코드 인젝션
