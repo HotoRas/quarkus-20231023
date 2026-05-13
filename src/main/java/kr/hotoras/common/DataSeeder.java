@@ -39,9 +39,9 @@ public class DataSeeder {
     /**
      * 챔피언 데이터 생성 및 삽입
      * 
-     * @param name : 챔피언 이름
-     * @param role : 역할
-     * @param line : 주력 라인
+     * @param name 챔피언 이름
+     * @param role 역할
+     * @param line 주력 라인
      */
     private void persist(String name, String role, String line) {
         Champion c = new Champion();

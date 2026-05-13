@@ -23,7 +23,7 @@ public class ChampionResource {
     /**
      * 챔피언 삽입
      * 
-     * @param champion : 삽입할 챔피언
+     * @param champion 삽입할 챔피언
      */
     @POST
     @Transactional
