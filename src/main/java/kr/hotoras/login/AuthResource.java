@@ -15,6 +15,19 @@ public class AuthResource {
     @Inject
     RoutingContext context; // Quarkus Vert.x 세션 접근
 
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public Response mainPage() {
+        String loginUser = context.session().get("loginUser");
+        System.out.println("=== [GET /] 세션 ID : " + context.session().id());
+        System.out.println("=== [GET /] loginUser : " + loginUser);
+
+        String htmlPath = (loginUser != null) ? "login/main_after_login.html" : "main_index.html";
+        InputStream html = getClass().getClassLoader().getResourceAsStream("META-INF/resources/" + htmlPath);
+
+        return Response.ok(html).build();
+    }
+
     // GET /login → 로그인 HTML 페이지 반환
 
     /**
@@ -176,6 +189,23 @@ public class AuthResource {
                 .getClassLoader()
                 .getResourceAsStream(
                         "META-INF/resources/login/register_success.html");
+        return Response.ok(html).build();
+    }
+
+    @GET
+    @Path("/profile")
+    @Produces(MediaType.TEXT_HTML)
+    public Response profilePage() {
+        String loginUser = context.session().get("loginUser");
+        if (loginUser == null)
+            return Response.seeOther(URI.create("/login")).build();
+
+        User user = User.findByUsername(loginUser);
+        context.session().put("userEmail", user.email);
+        context.session().put("userPhone", user.phone);
+        context.session().put("profileImage", user.profileImage != null ? user.profileImage : "default.jpg");
+
+        InputStream html = getClass().getClassLoader().getResourceAsStream("META-INF/resources/login/profile.html");
         return Response.ok(html).build();
     }
 }

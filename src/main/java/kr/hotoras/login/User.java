@@ -15,6 +15,7 @@ public class User extends PanacheEntity {
      * 사용자명
      */
     public String username;
+
     /**
      * 비밀번호
      */
@@ -27,10 +28,16 @@ public class User extends PanacheEntity {
      */
     @Column(unique = true)
     public String email;
+
     /**
      * 전화번호
      */
     public String phone;
+
+    /**
+     * 프로필 이미지 UUID
+     */
+    public String profileImage;
 
     public static User findByUsername(String username) {
         return find("username", username).firstResult();

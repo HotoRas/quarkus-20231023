@@ -18,7 +18,8 @@ public class DataSeeder {
         if (User.count() == 0) {
             User guest = new User();
             guest.username = "guest";
-            guest.password = "123123";
+            guest.password = "7680bf06962a60f8f9b099f3c951fee6a30e53d0ff39586eb32f256418a32b20"; // hash inject
+            guest.email = "guest@example.com";
             guest.persist();
         }
         if (Champion.count() > 0)
