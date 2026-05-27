@@ -15,6 +15,7 @@ declare class User {
     password: string;
     /*@unique*/ email: string;
     phone: string;
+    profileImage: string;
 
     findByUsername: (username: string) => User;
     findByEmail: (email: string) => User;
