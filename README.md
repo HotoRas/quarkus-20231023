@@ -48,7 +48,7 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 ```shell script
 ./mvnw package -Dnative -Dquarkus.native.container-build=true
 ```
-
+<!-- 
 You can then execute your native executable with: `./target/code-with-quarkus-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
@@ -59,7 +59,7 @@ If you want to learn more about building native executables, please consult <htt
 - Qute Web ([guide](https://quarkiverse.github.io/quarkiverse-docs/quarkus-qute-web/dev/index.html)): Serves Qute templates directly over HTTP.
 - Qute ([guide](https://quarkus.io/guides/qute)): Offer templating support for web, email, etc in a build time, type-safe way
 - OpenID Connect ([guide](https://quarkus.io/guides/security-openid-connect)): Verify Bearer access tokens and authenticate users with Authorization Code Flow
-- WebSockets ([guide](https://quarkus.io/guides/websockets)): WebSocket communication channel support
+- WebSockets ([guide](https://quarkus.io/guides/websockets)): WebSocket communication channel support -->
 
 ## Provided Code
 - Qute Web
@@ -128,58 +128,33 @@ javascript! (프론트엔드 WebDAV 스크립팅)
 /src/main/resources/META-INF/resources = /
 │  index.html
 │  
-├─css
-│      champion.css
-│      download.css
-│      index.css
+├─css/{champion.css,download.css,index.css}
 │      
-├─js
-│      interfaces.d.ts
-│      search.js
-│      test.js
-│      toggle.js
+├─js/{interfaces.d.ts,search.js,test.js,toggle.js}
 │      
-├─login
-│      login.html
-│      main_after_login.html
+├─login/{login.html,main_after_login.html}
 │      
-├─modals
-│      Aatrox.html
-│      navbar.html
-│      SearchChamp.html
+├─modals/{Aatrox.html,navbar.html,SearchChamp.html}
 │      
-├─pds
-│      lol.exe
+├─pds/lol.exe
 │      
 ├─res
-│  ├─bnr
-│  │      download-banner.webp
+│  ├─bnr/download-banner.webp
 │  │      
-│  ├─img
-│  │      Aatrox.png
-│  │      LOL.webp
+│  ├─img/{Aatrox.png,LOL.webp}
 │  │      
-│  └─img-large
-│          Aatrox.jpg
+│  └─img-large/{Aatrox.jpg}
 │          
-└─sub
-        download.html
+└─sub/download.html
 ```
 #### 백엔드 디렉토리 구조
 ```tree
 /src/main/java/kr/hotoras = package kr.hotoras
-├─champion
-│      Champion.java
-│      ChampionResource.java
+├─champion/{Champion.java,ChampionResource.java}
 │      
-├─common
-│      DataSeeder.java
-│      GreetingResource.java
-│      StartWebSocket.java
+├─common/{DataSeeder.java,GreetingResource.java,StartWebSocket.java}
 │      
-└─login
-        AuthResource.java
-        User.java
+└─login/{AuthResource.java,User.java}
 ```
 
 ### 11주차
@@ -196,6 +171,23 @@ ALTER TABLE lol.users MODIFY COLUMN password VARCHAR(511);
 ALTER TABLE lol.users MODIFY COLUMN email VARCHAR(255) NOT NULL;
 ALTER TABLE lol.users MODIFY COLUMN phone VARCHAR(32);
 ```
+
+## 12주차
+- 로그인 구현 추가
+  * 회원가입 시 비밀번호 SHA256 적용
+  * navbar (`/after-login`): 프로필 링크 추가 (to `/profile`)
+  * 로그인 페이지 수정: 유효성 체크
+
+## 13주차
+- 회원관리 구현 추가
+  * 개인 프로필 조회 페이지 추가
+  * 프로필 사진 업로드 기능 추가
+- 로그인 후 `/login`시 `/after_login`으로 던지기 구현
+- 전체 페이지 다크, 라이트 모드 구현 조정
+  * 내비바 중앙 정렬 (5주차 아니었나 이거)
+  * 검색창 다크/라이트 모드 전환 구현 (`/js/toggle.js` 직접 수정)
+  * `/profile` 다크/라이트 전환 구현 (`/js/toggle.js` 직접 수정)
+  * session 활용 다크/라이트 모드 유지 구현
 
 #### todo!
 - 챔피언 총 12체에 대한 모달 구현 (JS상 구현)

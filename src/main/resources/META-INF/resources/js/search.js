@@ -85,11 +85,11 @@ data-bs-toggle=modal data-bs-target="#modalSearchChamp" data-champ="${c.engName}
 }
 
 
-document.getElementsByClassName('search-category-champ')[0].addEventListener('onclick', () => switchCategory('champion', this))
-document.getElementsByClassName('search-category-news')[0].addEventListener('onclick', () => switchCategory('news', this))
+document.getElementsByClassName('search-category-champ')[0]?.addEventListener('onclick', () => switchCategory('champion', this))
+document.getElementsByClassName('search-category-news')[0]?.addEventListener('onclick', () => switchCategory('news', this))
 
 
-document.getElementById('searchForm').addEventListener('submit', (e) => {
+document.getElementById('searchForm')?.addEventListener('submit', (e) => {
     e.preventDefault()
     const query = document.getElementById('searchInput').value.trim()
     performSearch(query)

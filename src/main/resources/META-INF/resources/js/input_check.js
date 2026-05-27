@@ -52,6 +52,7 @@ function showError(fieldId, message) {
     field.classList.add('is-invalid')
     const msg = document.getElementById(fieldId + 'Msg')
     if (msg) msg.textContent = message
+    showToast(message, 'danger')
 }
 function clearError(fieldId) {
     const field = document.getElementById(fieldId)

@@ -4,6 +4,13 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.net.URI;
+import java.nio.file.Paths;
+import java.util.Map;
+import java.util.UUID;
+
+import org.jboss.resteasy.reactive.RestForm;
+import org.jboss.resteasy.reactive.multipart.FileUpload;
+
 import java.io.InputStream;
 
 import jakarta.inject.Inject;
@@ -41,6 +48,10 @@ public class AuthResource {
     @Path("/login") // 경로 명시
     @Produces(MediaType.TEXT_HTML) // 서버 → 클라
     public Response loginPage() {
+        String loginUser = context.session().get("loginUser");
+        if (loginUser != null)
+            return Response.seeOther(URI.create("/after_login")).build();
+
         InputStream html = getClass()
                 .getClassLoader()
                 .getResourceAsStream("META-INF/resources/login/login.html");
@@ -207,5 +218,65 @@ public class AuthResource {
 
         InputStream html = getClass().getClassLoader().getResourceAsStream("META-INF/resources/login/profile.html");
         return Response.ok(html).build();
+    }
+
+    @GET
+    @Path("/profile/info")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response profileInfo() {
+        String loginUser = context.session().get("loginUser");
+        if (loginUser == null)
+            return Response.status(401).build();
+
+        User user = User.findByUsername(loginUser);
+        return Response.ok(
+                Map.of(
+                        "username", user.username,
+                        "email", user.email,
+                        "phone", user.phone,
+                        "profileImage", user.profileImage != null ? user.profileImage : ""))
+                .build();
+    }
+
+    @POST
+    @Path("/profile/upload")
+    @Transactional
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response profileUpload(@RestForm("profileImage") FileUpload file) {
+        String loginUser = context.session().get("loginUser");
+        if (loginUser == null)
+            return Response.seeOther(URI.create("/login")).build();
+
+        try {
+            String original = file.fileName();
+            String ext = original.substring(original.lastIndexOf('.') + 1).toLowerCase();
+
+            if (!ext.matches("jpg|jpeg|png|gif|webp"))
+                return Response.seeOther(URI.create("/profile?error=invalid_type")).build();
+
+            if (file.size() > 5 * 1024 * 1024) {
+                return Response
+                        .seeOther(URI.create("/profile?error=too_large"))
+                        .build();
+            }
+            // ④ UUID 파일명 생성 + 저장
+            String newFileName = UUID.randomUUID() + "." + ext;
+            java.nio.file.Path uploadDir = Paths.get(
+                    "src/main/resources/META-INF/resources/uploads/profile");
+            java.nio.file.Files.createDirectories(uploadDir);
+            java.nio.file.Files.copy(file.uploadedFile(),
+                    uploadDir.resolve(newFileName),
+                    java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+            // ⑤ DB 업데이트
+            User user = User.findByUsername(loginUser);
+            user.profileImage = newFileName;
+            return Response
+                    .seeOther(URI.create("/profile?update-success=&"))
+                    .build();
+        } catch (Exception e) {
+            return Response
+                    .seeOther(URI.create("/profile?error=upload_fail"))
+                    .build();
+        }
     }
 }

@@ -49,3 +49,7 @@ runsc/
 
 # executables
 *.exe
+
+# uploads
+/src/main/resources/META-INF/resources/uploads/profile/*.jpg
+!/src/main/resources/META-INF/resources/uploads/profile/default.jpg
