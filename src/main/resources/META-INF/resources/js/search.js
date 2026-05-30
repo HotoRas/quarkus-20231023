@@ -1,6 +1,6 @@
 // -- 챔피언 raw 데이터, 뉴스 raw 데이터
 const CHAMPIONS = [
-    { name: '아트록스', engName: 'Aatrox', role: '전사', lane: '탑', img: 'res/img/Aatrox.png', difficulty: '상' },
+    { name: '아트록스', engName: 'Aatrox', role: '전사', lane: '탑', img: '/res/img/Aatrox.png', difficulty: '상' },
     { name: '사일러스', engName: 'Sylas', role: '마법사', lane: '정글/미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Sylas.png', difficulty: '중' },
     { name: '애니비아', engName: 'Anivia', role: '마법사', lane: '미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Anivia.png', difficulty: '상' },
     { name: '브라이어', engName: 'Briar', role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Briar.png', difficulty: '중' },
@@ -24,7 +24,17 @@ function switchCategory(type, el) {
 // ── 검색 실행 ────────────────────────────────────────────────
 function performSearch(query) {
     const q = query.trim().toLowerCase() // 앞 뒤 공백제거, 소문자 변환
-    if (!q) return
+    if (!q) {
+        document.querySelector('.hero').classList.remove('d-none') // 히어로 섹션 표시
+        document.querySelectorAll('section:not(#searchResults)').forEach(s => s.classList.remove('d-none')) // 나머지 섹션 표시
+        document.getElementById('searchResults').classList.add('d-none') // searchResults 전부 비표시
+        document.getElementById('searchResults').style.display = 'none'
+
+        document.getElementById('championResultList').innerHTML=''
+        document.getElementById('newsResultList').innerHTML='' // 검색 결과 flush
+
+        return
+    }
     document.getElementById('searchKeywordDisplay').textContent = `"${query}"`; // 검색어 인식
     // 챔피온 데이터에서 이름, 영문명, 역할군, 라인 중 하나라도 검색어에 포함되면
     const champResults = CHAMPIONS.filter(c =>
@@ -43,7 +53,7 @@ function performSearch(query) {
     } else {
         champList.innerHTML = champResults.map(c => `
 <div class="search-result-card d-flex align-items-center p-0 overflow-hidden"
-data-bs-toggle=modal data-bs-target="#modalSearchChamp" data-champ="${c.engName}"><!-- 동적으로 모달 로드 방식: 모달 이름에 챔피언 이름 산입 불필요 -->
+data-bs-toggle=modal data-bs-target="#modalSearchChamp${c.engName}" data-champ="${c.engName}"><!-- 동적으로 모달 로드 방식: 모달 이름에 챔피언 이름 산입 불필요 -->
 <img src="${c.img}" alt="${c.name}">
 <div class="p-3">
 <div style="font-weight:700; font-size:1rem; color:#111;">${c.name} <span style="color:#888; font-size:0.85rem;">(${c.engName})</span></div>
@@ -51,7 +61,7 @@ data-bs-toggle=modal data-bs-target="#modalSearchChamp" data-champ="${c.engName}
 </div>
 </div>
 <!-- 검색창용 모달 -->
-<div class="modal fade" id=modalSearchChamp tabindex="-1" aria-labelledby="modal${c.engName}Label" aria-hidde=true>
+<div class="modal fade" id=modalSearchChamp${c.engName} tabindex="-1" aria-labelledby="modal${c.engName}Label" aria-hidde=true>
 <div class=modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
 <div class="modal-content bg-dark text-white border-secondary">
 <div class="modal-header border-secondary">
@@ -59,7 +69,7 @@ data-bs-toggle=modal data-bs-target="#modalSearchChamp" data-champ="${c.engName}
 <button class="btn-close btn-close-white" data-bs-dismiss=modal aria-label=Close></button>
 </div>
 <div class="modal-body p-0" style="height:65vh;background:#010e17;">
-<iframe src="/modals/${c.engName}.html" frameborder=0 style="width:100%;height:100%;border:none;" allowfullscreen></iframe>
+<iframe src="/modals/championDetail.html?champ=${c.engName}&krName=${c.name}&img=${c.img}" frameborder=0 style="width:100%;height:100%;border:none;" allowfullscreen></iframe>
 </div>
 <div class="modal-footer border-secondary><button class="btn btn-outline-light" type=button data-bs-dismiss=modal>닫기</button></div>
 </div></div></div>

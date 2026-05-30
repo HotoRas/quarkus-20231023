@@ -203,7 +203,10 @@ ALTER TABLE lol.users MODIFY COLUMN phone VARCHAR(32);
 | `/register_success` | document | `@onload` | `() => showToast('회원가입이 완료되었습니다!')` |
 > `/register`, `/register_success`는 해당 페이지가 로딩된 상태가 toast 내용의 상태문이 되므로 `window.onload`에 이벤트 할당
 
-- navbar: `/modals/navbar.html`, `/modals/navbar-loggedin.html`에 투입하여 동적 로딩 준비
+- navbar: ~~`/modals/navbar.html`, `/modals/navbar-loggedin.html`에 투입하여 동적 로딩 준비~~
+- `/js/search.js`: 검색 표시 오류 수정
+  * TODO! `kr.hotoras.champion.ChampionDetail extends PanacheEntity`에 내용 주입  
+  (String 기본값인 `varchar(255)`에 산입 불가로 자동 트랜젝션 방법 강구)
 
 #### todo!
 - 챔피언 총 12체에 대한 모달 구현 (JS상 구현)

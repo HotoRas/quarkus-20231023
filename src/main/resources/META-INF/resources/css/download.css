@@ -45,14 +45,19 @@ body {
     border-color: #a020f0;
 }
 
-.table {
+.table.table-dark {
     --bs-table-bg: #1e1e1e;
     --bs-table-color: #e0e0e0;
     --bs-table-border-color: #444;
 }
 
-.table th {
+.table.table-dark th {
     background-color: #000;
+    color: #c8aa6e;
+}
+
+.table.table-light th {
+    background-color: #5d2580;
     color: #c8aa6e;
 }
 
@@ -83,6 +88,7 @@ body.light-mode .nav-tabs .nav-link {
 
 body.light-mode .nav-tabs .nav-link.active {
     color: #c8aa6e !important;
+    background-color: #7c2dad !important;
 }
 
 body.light-mode .hero {
@@ -90,7 +96,7 @@ body.light-mode .hero {
 }
 
 body.light-mode .hero.download {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
         url('/res/bnr/download-banner.webp') center/cover no-repeat;
     color: #e0e0e0;
 }

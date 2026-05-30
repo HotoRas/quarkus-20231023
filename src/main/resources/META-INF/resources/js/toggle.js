@@ -4,7 +4,7 @@ function updateTheme() {
     const navbar = document.querySelector('.navbar')
 
     const userinfo = document.getElementById('userinfoWrapper')
-    const usercont = document.getElementById('userinfoContainer')
+    const table = document.getElementsByTagName('table')
 
     if (body.classList.contains('light-mode')) {
         sessionStorage.setItem('theme', 'light')
@@ -12,11 +12,13 @@ function updateTheme() {
         navbar.classList.remove('navbar-dark', 'bg-dark')
         navbar.classList.add('navbar-light', 'bg-light')
         navbar.setAttribute('data-bs-theme', 'light')
-        if (userinfo !== null && usercont !== null) {
+        if (userinfo !== null) {
             userinfo.classList.remove('bg-dark', 'text-white')
-            usercont.classList.remove('table-dark')
             userinfo.classList.add   ('bg-light','text-dark')
-            usercont.classList.add   ('table-light')
+        }
+        if (table !== null) {
+            for (let idx = 0; idx < table.length; idx++)
+                table[idx].classList.replace('table-dark', 'table-light')
         }
     } else {
         sessionStorage.setItem('theme', 'dark')
@@ -24,11 +26,13 @@ function updateTheme() {
         navbar.classList.remove('navbar-light', 'bg-light')
         navbar.classList.add('navbar-dark', 'bg-dark')
         navbar.setAttribute('data-bs-theme', 'dark')
-        if (userinfo !== null && usercont !== null) {
+        if (userinfo !== null) {
             userinfo.classList.remove('bg-light','text-dark')
-            usercont.classList.remove('table-light')
             userinfo.classList.add   ('bg-dark', 'text-white')
-            usercont.classList.add   ('table-dark')
+        }
+        if (table !== null) {
+            for (let idx = 0; idx < table.length; idx++)
+                table[idx].classList.replace('table-light', 'table-dark')
         }
     }
 }
