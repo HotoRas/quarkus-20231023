@@ -41,9 +41,31 @@ const toggleTheme = () => {
     updateTheme()
 }
 
-
-
 if (sessionStorage.getItem('theme') === 'light') {
     document.body.classList.add('light-mode')
     updateTheme()
 }
+
+/*
+if (sessionStorage.getItem('loginUser') !== null) {
+    fetch('/modals/navbar-loggedin.html').then(r=>{
+        if (!r.ok) throw new Error('404')
+        return r.text()
+    }).then(t=>
+        document.getElementsByTagName('nav').innerHTML = t
+    ).catch(e=>{
+        console.error('file not found:', '/modals/navbar-loggedin.html')
+    })
+} else {
+    fetch('/modals/navbar.html').then(r=>{
+        if (!r.ok) throw new Error('404')
+        return r.text()
+    }).then(t=>
+        document.getElementsByTagName('nav').innerHTML = t
+    ).catch(e=>{
+        console.error('file not found:', '/modals/navbar.html')
+    })
+}
+ */
+
+document.getElementById('themeToggleBtn')?.addEventListener('click', toggleTheme)

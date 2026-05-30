@@ -189,6 +189,22 @@ ALTER TABLE lol.users MODIFY COLUMN phone VARCHAR(32);
   * `/profile` 다크/라이트 전환 구현 (`/js/toggle.js` 직접 수정)
   * session 활용 다크/라이트 모드 유지 구현
 
+### extra
+- `@Item Champion`: 검색 기능 구현 준비 (실제 텍스트 파싱 처리 X)
+- `/js/test.js` -> `/js/toast.js` (파일명 변경)
+  * 모든 페이지 toast 구현
+
+| 페이지 | 항목 | 이벤트 | toast 구현 |
+|---|---|---|---|
+| `#navbar` | a#playLeague | `@click` | `() => showToast('즐거운 플레이 되세요')` |
+| `/` | document | `@onload` | `() => showToast('메인 페이지 로딩 완료')` |
+| `/after_login` | document | `@onload` | ``async() => showToast(`${await fetch....then(d=>d.username)} 아이디로 로그인되어 있습니다.`)`` |
+| `/register` | document | `@onload` | `() => showToast('회원가입 페이지 로딩 완료')` |
+| `/register_success` | document | `@onload` | `() => showToast('회원가입이 완료되었습니다!')` |
+> `/register`, `/register_success`는 해당 페이지가 로딩된 상태가 toast 내용의 상태문이 되므로 `window.onload`에 이벤트 할당
+
+- navbar: `/modals/navbar.html`, `/modals/navbar-loggedin.html`에 투입하여 동적 로딩 준비
+
 #### todo!
 - 챔피언 총 12체에 대한 모달 구현 (JS상 구현)
   - `/js/search`의 `CHAMPIONS: any[]`를 별도 파일로 추출해 구현

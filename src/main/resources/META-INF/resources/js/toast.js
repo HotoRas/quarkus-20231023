@@ -10,3 +10,5 @@ function showToast(m, type='success') {
     const toast = new bootstrap.Toast(toastEl, {delay: 3000})
     toast.show()
 }
+
+document.getElementById('playLeague')?.addEventListener('click', () => showToast('즐거운 플레이 되세요'))

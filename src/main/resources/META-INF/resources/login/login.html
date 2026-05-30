@@ -10,7 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- 커스텀 스타일 (LOL 테마 + 챔피언 호버 효과) -->
     <link rel="stylesheet" href="/css/index.css">
-    <!-- <script src="/js/test.js"></script> -->
 
 </head>
 
@@ -21,7 +20,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="/#"><img src="/res/img/LOL.webp" alt="League of Legends" width="30"
                     height="24"></a>
-            <button class="btn border-0" id="themeToggleBtn" onclick="toggleTheme()">🌙 DARK </button>
+            <button class="btn border-0" id="themeToggleBtn">🌙 DARK </button>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,8 +45,7 @@
                             <li><a href="https://youtube.com/" class="dropdown-item" target="_blank">관련 유튜브 채널</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="#" class="nav-link btn btn.primary btn-lg"
-                            onclick="alert('즐거운 플레이 되세요')">무료
+                    <li class="nav-item"><a href="#" class="nav-link btn btn.primary btn-lg" id="playLeague">무료
                             플레이</a></li>
                 </ul>
                 <form role="search" class="d-flex" id="searchForm">
@@ -95,6 +93,21 @@
         Resources copyright (c) Riot Games.<br>
         "League of Legends" and its logos are trademarks of Riot Games.
     </footer> -->
+
+    <div class="toast-container position-fixed
+bottom-0 end-0 p-3" style="z-index:9999">
+        <div id="liveToast" class="toast align-items-center
+text-white bg-success border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body" id="toastBody">
+                    메시지
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+    <script src="/js/toast.js"></script>
+
 
     <!-- late include script: enable ID search-->
     <!-- <script src="/js/search.js"></script> -->
