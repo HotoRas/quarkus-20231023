@@ -44,4 +44,21 @@ public class ChampionResource {
         // final fallback of not found
         return Response.status(404).build();
     }
+
+    @GET
+    @Path("/champion/{champ}/details")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDetails(@PathParam("champ") String champion) {
+        ChampionDetails champ = ChampionDetails.findByName(champion);
+        if (champ != null)
+            return Response.ok(champ, MediaType.APPLICATION_JSON).build();
+        return Response.status(404).build();
+    }
+
+    @POST
+    @Path("/champions/details")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void addDetails(ChampionDetails champion) {
+        champion.persist();
+    }
 }

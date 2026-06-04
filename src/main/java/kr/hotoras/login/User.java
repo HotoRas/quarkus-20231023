@@ -14,11 +14,13 @@ public class User extends PanacheEntity {
     /**
      * 사용자명
      */
+    @Column(length = 32)
     public String username;
 
     /**
      * 비밀번호
      */
+    @Column(length = 1024)
     public String password; // SHA256
 
     /**
@@ -26,17 +28,19 @@ public class User extends PanacheEntity {
      * 
      * @Unique
      */
-    @Column(unique = true)
+    @Column(unique = true, length = 256)
     public String email;
 
     /**
      * 전화번호
      */
+    @Column(length = 32)
     public String phone;
 
     /**
      * 프로필 이미지 UUID
      */
+    @Column(length = 48)
     public String profileImage;
 
     public static User findByUsername(String username) {

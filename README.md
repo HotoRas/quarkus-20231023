@@ -205,8 +205,12 @@ ALTER TABLE lol.users MODIFY COLUMN phone VARCHAR(32);
 
 - navbar: ~~`/modals/navbar.html`, `/modals/navbar-loggedin.html`에 투입하여 동적 로딩 준비~~
 - `/js/search.js`: 검색 표시 오류 수정
-  * TODO! `kr.hotoras.champion.ChampionDetail extends PanacheEntity`에 내용 주입  
-  (String 기본값인 `varchar(255)`에 산입 불가로 자동 트랜젝션 방법 강구)
+
+- `kr.hotoras.champion.ChampionDetails.java` 추가
+  * 이름 (영문명, 검색용), 국문 이름 (검색용), 요약 (string), 스킬셋 (ptr?), 스토리 (string)
+  * 스킬셋에 대한 템플릿은 `kr.hotoras.champion.ChampionSkill.java`에 추가
+  * 챔피언 상세정보 추가 준비: `/champion/{champ}/details` 엔드포인트 추가
+  * 챔피언 상세정보 삽입 준비: `/champions/details POST` 엔드포인트 추가
 
 #### todo!
 - 챔피언 총 12체에 대한 모달 구현 (JS상 구현)

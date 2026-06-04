@@ -5,6 +5,22 @@ declare class Champion {
     name: string;
     role: string;
     line: string;
+
+    static findByName: (champion: string) => Champion;
+}
+
+// @jakarta.persistence.Entity
+// public class kr.hotoras.champion.ChampionDetails
+//     extends io.quarkus.hibernate.orm.panache.PanacheEntity
+declare class ChampionDetails {
+    name: string;
+    nameKor: string;
+    summary: string;
+    skills: { keyPress: string, name: string }[];
+    story: string;
+
+    static findByName: (champion: string) => ChampionDetails;
+    static findByChampion: (champion: Champion) => ChampionDetails;
 }
 
 // @jakarta.persistence.Entity
@@ -17,8 +33,8 @@ declare class User {
     phone: string;
     profileImage: string;
 
-    findByUsername: (username: string) => User;
-    findByEmail: (email: string) => User;
+    static findByUsername: (username: string) => User;
+    static findByEmail: (email: string) => User;
 }
 
 declare class UserRegister extends User {
