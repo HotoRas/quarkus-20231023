@@ -12,7 +12,7 @@ public class ChampionDetails extends PanacheEntity {
     @Column(length = 32)
     public String name;
     @Column(length = 32)
-    public String nameKor;
+    public String engName;
     @Column(columnDefinition = "TEXT")
     public String summary;
     @ElementCollection
@@ -25,6 +25,10 @@ public class ChampionDetails extends PanacheEntity {
     }
 
     public static ChampionDetails findByChampion(Champion champion) {
-        return find("nameKor", champion.name).firstResult();
+        return find("name", champion.name).firstResult();
+    }
+
+    public static ChampionDetails findByEnglishName(String champion) {
+        return find("engName", champion).firstResult();
     }
 }

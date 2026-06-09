@@ -12,8 +12,14 @@ public class Champion extends PanacheEntity {
     public String role; // 역할
     @Column(length = 32)
     public String line; // 라인
+    @Column(length = 32)
+    public String engName; // 영문명
 
     public static Champion findByName(String champion) {
         return find("name", champion).firstResult();
+    }
+
+    public static Champion findByEnglishName(String champion) {
+        return find("engName", champion).firstResult();
     }
 }
