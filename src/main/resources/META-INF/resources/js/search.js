@@ -15,10 +15,10 @@ const NEWS = [
 
 // ── 카테고리 전환 ────────────────────────────────────────────
 function switchCategory(type, el) {
-    document.querySelectorAll('.search-category-item').forEach(i => i.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById('resultChampion').style.display = type === 'champion' ? 'block' : 'none';
-    document.getElementById('resultNews').style.display = type === 'news' ? 'block' : 'none';
+    document.querySelectorAll('.search-category-item').forEach(i => i.classList.remove('active'))
+    el.classList.add('active')
+    document.getElementById('resultChampion').style.display = type === 'champion' ? 'block' : 'none'
+    document.getElementById('resultNews').style.display = type === 'news' ? 'block' : 'none'
 }
 
 // ── 검색 실행 ────────────────────────────────────────────────
