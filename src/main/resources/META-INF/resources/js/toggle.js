@@ -39,8 +39,7 @@ function updateTheme() {
 
 const toggleTheme = () => {
     /// function toggleTheme() -> void
-    const body = document.body
-    body.classList.toggle('light-mode')
+    document.body.classList.toggle('light-mode')
 
     updateTheme()
 }
